@@ -8,6 +8,8 @@ RUN wget https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSIO
     && unzip pocketbase_${PB_VERSION}_linux_amd64.zip \
     && rm pocketbase_${PB_VERSION}_linux_amd64.zip
 
+VOLUME /pb_data
+
 EXPOSE 8090
 
-CMD ["/pocketbase", "serve", "--http=0.0.0.0:8090"]
+CMD ["/pocketbase", "serve", "--http=0.0.0.0:8090", "--dir=/pb_data"]
